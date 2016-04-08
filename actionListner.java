@@ -1,8 +1,8 @@
 //arrayy = array of Jbuttons
 //playGame = GameModel
-//matchStatus = boolean in GameModel
+//matchStatus = int in GameModel
 //banner = TextArea
-//playGame.reset() = reests backend check grid
+//playGame.reset() = resets backend check grid
 
    public void actionPerformed(ActionEvent ae){
    
@@ -18,12 +18,15 @@
          arrayy[i].setIcon(dealGame.get(i)); 
          
          //Check for match
-         if(playGame.matchStatus() == true)){
+         if(playGame.matchStatus() == 3)){//matched
             banner.setText("Right!");
             arrayy[i].removeActionListener(this); 
          }
-         else{
+         else if(playGame.matchStatus() == 2){ //2 cards. Not matching
             banner.setText("Wrong!");
+         }
+         else{ //one card has been flipped
+            banner.setText("Flip another card!");
          }
          
       }
