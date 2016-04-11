@@ -12,7 +12,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
    private final int WINDOW_HEIGHT = 800;
    private JButton reset;
    private JButton [] panels = new JButton[16];
-   private GameModel playGame; 
+   private MooseGameModel playGame; 
    private String filler = "        ";
    private JLabel intro;
    private JLabel resultslabel;
@@ -103,9 +103,11 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          }
          
       }
-      else{ //what happens when other buttons are pressed
-         //playGame.reset();
+      else if (source == reset){ //what happens when other buttons are pressed
+         int i=0;
+         panels[i].setIcon(null);
       }
+
    
    }// main
 
