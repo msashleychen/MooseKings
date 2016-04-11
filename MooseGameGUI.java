@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*; 
 import java.util.*;
 
-public class MooseGameGUI extends JFrame{
+public class MooseGameGUI extends JFrame implements ActionListener{
 
 
    private final int WINDOW_WIDTH = 600;
@@ -32,7 +32,7 @@ public class MooseGameGUI extends JFrame{
    
       Panel pResults = new Panel();
       JButton reset = new JButton("Reset");
-   //textarea for num of attempts, result?
+      reset.addActionListener(this);
       pResults.add(reset);
    
       add (pResults,BorderLayout.SOUTH);
@@ -48,7 +48,7 @@ public class MooseGameGUI extends JFrame{
          panels[i].setBackground(new Color(185,228,246));
          panels[i].setForeground(Color.WHITE);
          //set font
-         //panels[i].addActionListener(this);
+         panels[i].addActionListener(this);
          pPanels.add(panels[i]);
       }
       add (pPanels,BorderLayout.CENTER);
