@@ -60,7 +60,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       
       pPanels.setLayout(new GridLayout(4,4));
       for(int i=0;i<16;i++){
-         String panelNum = "'u'";
+         String panelNum = i+1+"";
          panels[i] = new JButton (panelNum);
          panels[i].setBackground(new Color(185,228,246));
          panels[i].setForeground(Color.WHITE);
