@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; 
 import java.util.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class MooseGameGUI extends JFrame implements ActionListener{
 
@@ -10,30 +12,45 @@ public class MooseGameGUI extends JFrame implements ActionListener{
    private final int WINDOW_HEIGHT = 800;
    private JButton reset;
    private JButton [] panels = new JButton[16];
-   private MooseGameModel playGame; 
+   private GameModel playGame; 
    private String filler = "        ";
    private JLabel intro;
-   private JLabel results;
+   private JLabel resultslabel;
+   private TextArea results;
+
    
    
    public MooseGameGUI(){
       setTitle("Moose Matching Game");
       setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+      
+      Border customBorder = new LineBorder(Color.WHITE, 8);
    
-      JLabel intro = new JLabel("Click two boxes. Try to match all the pictures.");
+      JLabel intro = new JLabel("                                         Click two boxes. Try to match all the pictures.");
+      intro.setFont(new Font ("ComicSans", Font.PLAIN, 14));
       add(intro,BorderLayout.NORTH);
       add(new JLabel (filler), BorderLayout.EAST);
       add(new JLabel (filler), BorderLayout.WEST);
    
-      results = new JLabel(filler);
-      add (results, BorderLayout.SOUTH);
-   //make south region new panel with results and reset button?
-   
+      
+      
       Panel pResults = new Panel();
       JButton reset = new JButton("Reset");
       reset.addActionListener(this);
+         reset.setBackground(new Color(238,200,239));
+         reset.setForeground(Color.WHITE);
+         reset.setFont(new Font ("ComicSans",Font.BOLD, 32));
+         reset.setBorder(customBorder);
+      resultslabel = new JLabel("Results:");
+         resultslabel.setFont(new Font("ComicSans", Font.BOLD, 14));
+         resultslabel.setForeground(new Color(238,200,239));
+      results = new TextArea(filler,1,10,TextArea.SCROLLBARS_NONE);
+      results.setEditable(false);
       pResults.add(reset);
+      pResults.add(resultslabel);
+      pResults.add(results);
    
       add (pResults,BorderLayout.SOUTH);
    
@@ -43,17 +60,19 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       
       pPanels.setLayout(new GridLayout(4,4));
       for(int i=0;i<16;i++){
-         String panelNum = i+1+"";
+         String panelNum = "'u'";
          panels[i] = new JButton (panelNum);
          panels[i].setBackground(new Color(185,228,246));
          panels[i].setForeground(Color.WHITE);
+         panels[i].setFont(new Font ("ComicSans",Font.BOLD, 32));
+         panels[i].setBorder(customBorder);
          //set font
          panels[i].addActionListener(this);
          pPanels.add(panels[i]);
       }
       add (pPanels,BorderLayout.CENTER);
       
-      
+
       setVisible(true);
       
    }//public
