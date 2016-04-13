@@ -105,8 +105,11 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          
       }
       else if (source == panels[16]){ //what happens when other buttons are pressed
-         int i=0;
-         panels[i].setIcon(null);
+         int [] cardArray = playGame.getTurn();
+         panels[cardArray[0]].setIcon(null);
+         if (cardArray[1] != -1){
+            panels[cardArray[1]].setIcon(null);
+         }
       }
 
    
