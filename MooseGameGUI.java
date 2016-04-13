@@ -10,8 +10,8 @@ public class MooseGameGUI extends JFrame implements ActionListener{
 
    private final int WINDOW_WIDTH = 600;
    private final int WINDOW_HEIGHT = 800;
-   private JButton reset;
-   private JButton [] panels = new JButton[16];
+   //private JButton panels[17];
+   private JButton [] panels = new JButton[17];
    private MooseGameModel playGame; 
    private String filler = "        ";
    private JLabel intro;
@@ -37,18 +37,18 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       
       
       Panel pResults = new Panel();
-      JButton reset = new JButton("Reset");
-      reset.addActionListener(this);
-         reset.setBackground(new Color(238,200,239));
-         reset.setForeground(Color.WHITE);
-         reset.setFont(new Font ("ComicSans",Font.BOLD, 32));
-         reset.setBorder(customBorder);
+      panels[16] = new JButton("Reset");
+      panels[16].addActionListener(this);
+         panels[16].setBackground(new Color(238,200,239));
+         panels[16].setForeground(Color.WHITE);
+         panels[16].setFont(new Font ("ComicSans",Font.BOLD, 32));
+         panels[16].setBorder(customBorder);
       resultslabel = new JLabel("Results:");
          resultslabel.setFont(new Font("ComicSans", Font.BOLD, 14));
          resultslabel.setForeground(new Color(238,200,239));
       results = new TextArea(filler,1,10,TextArea.SCROLLBARS_NONE);
       results.setEditable(false);
-      pResults.add(reset);
+      pResults.add(panels[16]);
       pResults.add(resultslabel);
       pResults.add(results);
    
@@ -70,6 +70,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          panels[i].addActionListener(this);
          pPanels.add(panels[i]);
       }
+
       add (pPanels,BorderLayout.CENTER);
       
 
@@ -81,7 +82,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
    
       JButton source = (JButton)ae.getSource(); 
       // Find button
-      if (source != reset){ //check if the button is the grid or the other buttons
+      if (source != panels[16]){ //check if the button is the grid or the other buttons
          int i=0;
          while( source != panels[i])
             i++; 
@@ -103,7 +104,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          }
          
       }
-      else if (source == reset){ //what happens when other buttons are pressed
+      else if (source == panels[16]){ //what happens when other buttons are pressed
          int i=0;
          panels[i].setIcon(null);
       }
