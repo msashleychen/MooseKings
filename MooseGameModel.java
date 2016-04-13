@@ -12,22 +12,22 @@ class MooseGameModel extends GameModel{
    private int matches = 0;
 
    MooseGameModel(){
-         images[0] = new ImageIcon("moose1.jpg"); 
-         images[8] = new ImageIcon("moose1.jpg");  
-         images[1] = new ImageIcon("moose2.jpg");  
-         images[9] = new ImageIcon("moose2.jpg");  
-         images[2] = new ImageIcon("moose3.jpg");  
-         images[10] = new ImageIcon("moose3.jpg");  
-         images[3] = new ImageIcon("moose4.jpg");  
-         images[11] = new ImageIcon("moose4.jpg");  
-         images[4] = new ImageIcon("moose5.jpg");  
-         images[12] = new ImageIcon("moose5.jpg");  
-         images[5] = new ImageIcon("moose6.jpg");  
-         images[13] = new ImageIcon("moose6.jpg");  
-         images[6] = new ImageIcon("moose7.jpg");  
-         images[14] = new ImageIcon("moose7.jpg");  
-         images[7] = new ImageIcon("moose8.jpg");  
-         images[15] = new ImageIcon("moose8.jpg");   
+         images[0] = new ImageIcon("meese/moose1.jpg"); 
+         images[8] = new ImageIcon("meese/moose1.jpg");  
+         images[1] = new ImageIcon("meese/moose2.jpg");  
+         images[9] = new ImageIcon("meese/moose2.jpg");  
+         images[2] = new ImageIcon("meese/moose3.jpg");  
+         images[10] = new ImageIcon("meese/moose3.jpg");  
+         images[3] = new ImageIcon("meese/moose4.jpg");  
+         images[11] = new ImageIcon("meese/moose4.jpg");  
+         images[4] = new ImageIcon("meese/moose5.jpg");  
+         images[12] = new ImageIcon("meese/moose5.jpg");  
+         images[5] = new ImageIcon("meese/moose6.jpg");  
+         images[13] = new ImageIcon("meese/moose6.jpg");  
+         images[6] = new ImageIcon("meese/moose7.jpg");  
+         images[14] = new ImageIcon("meese/moose7.jpg");  
+         images[7] = new ImageIcon("meese/moose8.jpg");  
+         images[15] = new ImageIcon("meese/moose8.jpg");   
       
    }//moosegamemodel
    
@@ -45,6 +45,11 @@ class MooseGameModel extends GameModel{
   int[] getTurn(){
    return(turn); }
    
+   int getAttempts(){
+   return(attempts); }
+   
+   int getMatches(){
+   return(matches); }
 
    int matchStatus(){
       int status = 0;
