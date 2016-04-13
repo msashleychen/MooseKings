@@ -16,6 +16,9 @@ public class MooseGameGUI extends JFrame implements ActionListener{
    private String filler = "        ";
    private JLabel intro;
    private JLabel resultslabel;
+   private JLabel label2;
+   private JLabel counterLabel;
+   private TextArea counter;
    private TextArea results;
 
    
@@ -37,6 +40,15 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       
       
       Panel pResults = new Panel();
+      
+      counterLabel = new JLabel("Number of Matches");
+       counterLabel.setFont(new Font("ComicSans", Font.BOLD, 14));
+       counterLabel.setForeground(new Color(238,200,239));
+       pResults.add(counterLabel);
+       
+      counter = new TextArea(filler,1,5,TextArea.SCROLLBARS_NONE);
+         counter.setEditable(false);
+         pResults.add(counter);
       panels[16] = new JButton("Reset");
       panels[16].addActionListener(this);
          panels[16].setBackground(new Color(238,200,239));
@@ -52,6 +64,12 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       pResults.add(resultslabel);
       pResults.add(results);
    
+      label2 = new JLabel(filler);
+       label2.setFont(new Font("ComicSans", Font.BOLD, 14));
+       label2.setForeground(new Color(238,200,239));
+       pResults.add(label2);
+       
+         
       add (pResults,BorderLayout.SOUTH);
    
       Panel pPanels = new Panel();
@@ -105,11 +123,8 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          
       }
       else if (source == panels[16]){ //what happens when other buttons are pressed
-         int [] cardArray = playGame.getTurn();
-         panels[cardArray[0]].setIcon(null);
-         if (cardArray[1] != -1){
-            panels[cardArray[1]].setIcon(null);
-         }
+         int i=0;
+         panels[i].setIcon(null);
       }
 
    
