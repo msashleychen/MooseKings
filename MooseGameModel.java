@@ -12,9 +12,23 @@ class MooseGameModel extends GameModel{
    private int matches = 0;
 
    MooseGameModel(){
-      for(int i=0;i<images.length;i++){
-         images[i] = new ImageIcon("moose.jpg");  
-      }
+         images[0] = new ImageIcon("moose1.jpg"); 
+         images[8] = new ImageIcon("moose1.jpg");  
+         images[1] = new ImageIcon("moose2.jpg");  
+         images[9] = new ImageIcon("moose2.jpg");  
+         images[2] = new ImageIcon("moose3.jpg");  
+         images[10] = new ImageIcon("moose3.jpg");  
+         images[3] = new ImageIcon("moose4.jpg");  
+         images[11] = new ImageIcon("moose4.jpg");  
+         images[4] = new ImageIcon("moose5.jpg");  
+         images[12] = new ImageIcon("moose5.jpg");  
+         images[5] = new ImageIcon("moose6.jpg");  
+         images[13] = new ImageIcon("moose6.jpg");  
+         images[6] = new ImageIcon("moose7.jpg");  
+         images[14] = new ImageIcon("moose7.jpg");  
+         images[7] = new ImageIcon("moose8.jpg");  
+         images[15] = new ImageIcon("moose8.jpg");   
+      
    }//moosegamemodel
    
 
@@ -26,6 +40,11 @@ class MooseGameModel extends GameModel{
          turn[1]=clicked;
       }//else
    }//check
+   
+   
+  int[] getTurn(){
+   return(turn); }
+   
 
    int matchStatus(){
       int status = 0;
@@ -40,19 +59,9 @@ class MooseGameModel extends GameModel{
          else{
             status = 2;
          }//else
-         turn[0] = -1;
-         turn[1] = -1;
          attempts = attempts +1;
       }//else
-   
-   //if so, check if they are the same
-   //return true if same, false if different
-   //reset check funtion if they are the same
-   // 3=match   2=not match   1=only one flipped
       return status;}
-
-
-
 
 
    boolean gameOverStatus(){
@@ -61,6 +70,16 @@ class MooseGameModel extends GameModel{
    over = true;
    }//if
       return over;};
+      
+   
+   void reset(){
+  // button.setIcon(null);
+   turn[0] = -1;
+   turn[1] = -1;
+   }//reset   
+      
+   
+      
    
    ImageIcon get(int i){
      return(images[i]);}
