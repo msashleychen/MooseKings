@@ -8,6 +8,7 @@ import java.lang.*;
 class MooseGameModel extends GameModel{
    private ImageIcon [] images = new ImageIcon[16];
    private int [] turn = {-1,-1};
+   private int [] matched = new int [16];
    private int attempts = 0;
    private int matches = 0;
 
@@ -84,7 +85,14 @@ class MooseGameModel extends GameModel{
    }//reset   
       
    
-      
+   int [] getMatched(){
+      return matched;
+   }
+   
+   void addMatched(int i, int a){
+      matched[matches/2] = i;
+      matched[matches/2+1] = a;
+   }
    
    ImageIcon get(int i){
      return(images[i]);}

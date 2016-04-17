@@ -20,7 +20,6 @@ public class MooseGameGUI extends JFrame implements ActionListener{
    private JLabel counterLabel;
    private TextArea counter;
    private TextArea results;
-
    
    
    public MooseGameGUI(){
@@ -100,6 +99,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
    
       int [] cardArray = playGame.getTurn();
       label2.setText(Integer.toString(cardArray[0])+Integer.toString(cardArray[1]));
+      int [] matched = playGame.getMatched();
    
       JButton source = (JButton)ae.getSource(); 
       // Find button
@@ -115,12 +115,18 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          //Check for match
          if(playGame.matchStatus() == 3){//matched
             results.setText("Right!");
-            panels[cardArray[0]].removeActionListener(this); 
-            panels[cardArray[1]].removeActionListener(this); 
+            playGame.addMatched(cardArray[0],cardArray[1]); 
+            for(int a=0;a<matched.length;a++){
+               panels[matched[a]].removeActionListener(this);
+            }
+            counter.setText(Integer.toString(playGame.getMatches()));
             playGame.reset();
          }
          else if(playGame.matchStatus() == 2){ //2 cards. Not matching
             results.setText("Wrong!");
+            for(int a=0;a<16;a++){
+               panels[a].removeActionListener(this); 
+            }
            
          }
          else{ //one card has been flipped
@@ -130,11 +136,16 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       }
       else if (source == panels[16]){ //what happens when other buttons are pressed
          //int i=0;
+         if(cardArray[0]>-1){
          panels[cardArray[0]].setIcon(null);
+         }
          if(cardArray[1]>-1){
             panels[cardArray[1]].setIcon(null);
          }
          playGame.reset();
+         for(int a=0;a<16;a++){
+               panels[a].addActionListener(this); 
+         }
 
          
       }
