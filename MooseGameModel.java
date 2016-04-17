@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.lang.*;
-  
-
 
 class MooseGameModel extends GameModel{
    private ImageIcon [] images = new ImageIcon[16];
@@ -13,22 +11,22 @@ class MooseGameModel extends GameModel{
    private int matches = 0;
 
    MooseGameModel(){
-         images[0] = new ImageIcon("meese/moose1.jpg"); 
-         images[8] = new ImageIcon("meese/moose1.jpg");  
-         images[1] = new ImageIcon("meese/moose2.jpg");  
-         images[9] = new ImageIcon("meese/moose2.jpg");  
-         images[2] = new ImageIcon("meese/moose3.jpg");  
-         images[10] = new ImageIcon("meese/moose3.jpg");  
-         images[3] = new ImageIcon("meese/moose4.jpg");  
-         images[11] = new ImageIcon("meese/moose4.jpg");  
-         images[4] = new ImageIcon("meese/moose5.jpg");  
-         images[12] = new ImageIcon("meese/moose5.jpg");  
-         images[5] = new ImageIcon("meese/moose6.jpg");  
-         images[13] = new ImageIcon("meese/moose6.jpg");  
-         images[6] = new ImageIcon("meese/moose7.jpg");  
-         images[14] = new ImageIcon("meese/moose7.jpg");  
-         images[7] = new ImageIcon("meese/moose8.jpg");  
-         images[15] = new ImageIcon("meese/moose8.jpg");   
+      images[0] = new ImageIcon("meese/moose1.jpg"); 
+      images[8] = new ImageIcon("meese/moose1.jpg");  
+      images[1] = new ImageIcon("meese/moose2.jpg");  
+      images[9] = new ImageIcon("meese/moose2.jpg");  
+      images[2] = new ImageIcon("meese/moose3.jpg");  
+      images[10] = new ImageIcon("meese/moose3.jpg");  
+      images[3] = new ImageIcon("meese/moose4.jpg");  
+      images[11] = new ImageIcon("meese/moose4.jpg");  
+      images[4] = new ImageIcon("meese/moose5.jpg");  
+      images[12] = new ImageIcon("meese/moose5.jpg");  
+      images[5] = new ImageIcon("meese/moose6.jpg");  
+      images[13] = new ImageIcon("meese/moose6.jpg");  
+      images[6] = new ImageIcon("meese/moose7.jpg");  
+      images[14] = new ImageIcon("meese/moose7.jpg");  
+      images[7] = new ImageIcon("meese/moose8.jpg");  
+      images[15] = new ImageIcon("meese/moose8.jpg");   
       
    }//moosegamemodel
    
@@ -43,14 +41,14 @@ class MooseGameModel extends GameModel{
    }//check
    
    
-  int[] getTurn(){
-   return(turn); }
+   int[] getTurn(){
+      return(turn); }
    
    int getAttempts(){
-   return(attempts); }
+      return(attempts); }
    
    int getMatches(){
-   return(matches); }
+      return(matches); }
 
    int matchStatus(){
       int status = 0;
@@ -64,24 +62,24 @@ class MooseGameModel extends GameModel{
          }//if
          else{
             status = 2;
+            attempts = attempts +1;
          }//else
-         attempts = attempts +1;
       }//else
       return status;}
 
 
    boolean gameOverStatus(){
-   boolean over = false;
-   if(matches == 8){
-   over = true;
-   }//if
+      boolean over = false;
+      if(matches == 8){
+         over = true;
+      }//if
       return over;};
       
    
    void reset(){
-  // button.setIcon(null);
-   turn[0] = -1;
-   turn[1] = -1;
+   // button.setIcon(null);
+      turn[0] = -1;
+      turn[1] = -1;
    }//reset   
       
    
@@ -95,7 +93,7 @@ class MooseGameModel extends GameModel{
    }
    
    ImageIcon get(int i){
-     return(images[i]);}
+      return(images[i]);}
    
    
    int getRows(){

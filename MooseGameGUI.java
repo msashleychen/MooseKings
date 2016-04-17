@@ -30,7 +30,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       
       Border customBorder = new LineBorder(Color.WHITE, 8);
    
-      JLabel intro = new JLabel("                                         Click two boxes. Try to match all the pictures.");
+      JLabel intro = new JLabel("                                         Click two boxes. Try to match all the pictures in 10 attempts");
       intro.setFont(new Font ("ComicSans", Font.PLAIN, 14));
       add(intro,BorderLayout.NORTH);
       add(new JLabel (filler), BorderLayout.EAST);
@@ -98,33 +98,35 @@ public class MooseGameGUI extends JFrame implements ActionListener{
    public void actionPerformed(ActionEvent ae){
    
       int [] cardArray = playGame.getTurn();
-      label2.setText(Integer.toString(cardArray[0])+Integer.toString(cardArray[1]));
       int [] matched = playGame.getMatched();
+      
+      label2.setText(Integer.toString(playGame.getAttempts()/2)); //for debugging
    
       JButton source = (JButton)ae.getSource(); 
+      
       // Find button
       if (source != panels[16]){ //check if the button is the grid or the other buttons
          int i=0;
          while( source != panels[i])
             i++; 
          
-         // send in button push and let RandomPrizes object figure out the game 
+         //What happens when any button is pushed
          playGame.takeTurn(i); 
          panels[i].setIcon(playGame.get(i)); 
          
          //Check for match
          if(playGame.matchStatus() == 3){//matched
             results.setText("Right!");
-            playGame.addMatched(cardArray[0],cardArray[1]); 
-            for(int a=0;a<matched.length;a++){
+            playGame.addMatched(cardArray[0],cardArray[1]);
+            for(int a=0;a<matched.length;a++){ //Makes sure matched cards are disabled
                panels[matched[a]].removeActionListener(this);
             }
-            counter.setText(Integer.toString(playGame.getMatches()));
+            counter.setText(Integer.toString(playGame.getMatches()));//add to counter
             playGame.reset();
          }
          else if(playGame.matchStatus() == 2){ //2 cards. Not matching
             results.setText("Wrong!");
-            for(int a=0;a<16;a++){
+            for(int a=0;a<16;a++){ //Makes sure user clicks on reset button before revealing other cards
                panels[a].removeActionListener(this); 
             }
            
@@ -132,18 +134,25 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          else{ //one card has been flipped
             results.setText("Flip another card!");
          }
+         if(playGame.getMatches() == 8){
+            JOptionPane.showMessageDialog(null, "You've Won!");
+         }
+         if(playGame.getAttempts() == 20){
+            JOptionPane.showMessageDialog(null, "You've Lost!");
+         }
          
       }
       else if (source == panels[16]){ //what happens when other buttons are pressed
-         //int i=0;
-         if(cardArray[0]>-1){
+         if(cardArray[0]>-1){ //Resets card 1
          panels[cardArray[0]].setIcon(null);
          }
-         if(cardArray[1]>-1){
+         if(cardArray[1]>-1){ //Resets card 2
             panels[cardArray[1]].setIcon(null);
          }
+         
          playGame.reset();
-         for(int a=0;a<16;a++){
+         
+         for(int a=0;a<16;a++){ //Resets all action listener
                panels[a].addActionListener(this); 
          }
 
