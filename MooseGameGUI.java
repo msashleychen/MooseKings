@@ -152,7 +152,7 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          
          playGame.reset();
          
-         for(int a=0;a<16;a++){ //Resets all action listener
+         for(int a=0;a<17;a++){ //Resets all action listener
                panels[a].addActionListener(this); 
          }
 
