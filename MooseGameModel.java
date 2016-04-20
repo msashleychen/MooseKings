@@ -10,6 +10,9 @@ class MooseGameModel extends GameModel{
    private int attempts = 0;
    private int matches = 0;
 
+
+
+
    MooseGameModel(){
       images[0] = new ImageIcon("meese/moose1.jpg"); 
       images[8] = new ImageIcon("meese/moose1.jpg");  
@@ -28,14 +31,23 @@ class MooseGameModel extends GameModel{
       images[7] = new ImageIcon("meese/moose8.jpg");  
       images[15] = new ImageIcon("meese/moose8.jpg");   
       
+
+
    }//moosegamemodel
    
+void makeMatched(){
+for(int m=0; m<16;m++){
+matched[m] = -1;
+}
+}
+
 
    void takeTurn(int clicked){
       if(turn[0]==-1){
          turn[0]=clicked;
       }//if
       else{
+      
          turn[1]=clicked;
       }//else
    }//check
@@ -56,13 +68,14 @@ class MooseGameModel extends GameModel{
          status = 1;
       }//if
       else{
+        
+        
          if(Math.abs(turn[0]-turn[1])==8){
             status = 3;
             matches = matches +1;
          }//if
          else{
             status = 2;
-            attempts = attempts +1;
          }//else
       }//else
       return status;}
@@ -82,14 +95,18 @@ class MooseGameModel extends GameModel{
       turn[1] = -1;
    }//reset   
       
+   void setAttempts(){
+   attempts = attempts +1;
+   }
+   
    
    int [] getMatched(){
       return matched;
    }
    
    void addMatched(int i, int a){
-      matched[matches/2] = i;
-      matched[matches/2+1] = a;
+      matched[i] = 1;
+      matched[a] = 1;
    }
    
    ImageIcon get(int i){
