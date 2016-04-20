@@ -30,8 +30,9 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       
       Border customBorder = new LineBorder(Color.WHITE, 8);
    
-      JLabel intro = new JLabel("                                         Click two boxes. Try to match all the pictures in 10 attempts");
-      intro.setFont(new Font ("ComicSans", Font.PLAIN, 14));
+      JLabel intro = new JLabel("             Click two boxes. Try to match all the pictures in 10 attempts.");
+      intro.setFont(new Font ("Comic Sans MS", Font.BOLD, 14));
+      intro.setForeground(new Color(152,116,165)); //dark pink
       add(intro,BorderLayout.NORTH);
       add(new JLabel (filler), BorderLayout.EAST);
       add(new JLabel (filler), BorderLayout.WEST);
@@ -41,8 +42,8 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       Panel pResults = new Panel();
       
       counterLabel = new JLabel("Number of Matches");
-       counterLabel.setFont(new Font("ComicSans", Font.BOLD, 14));
-       counterLabel.setForeground(new Color(238,200,239));
+       counterLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+       counterLabel.setForeground(new Color(87,151,188)); //dark blue
        pResults.add(counterLabel);
        
       counter = new TextArea(filler,1,5,TextArea.SCROLLBARS_NONE);
@@ -50,13 +51,13 @@ public class MooseGameGUI extends JFrame implements ActionListener{
          pResults.add(counter);
       panels[16] = new JButton("Reset");
       panels[16].addActionListener(this);
-         panels[16].setBackground(new Color(238,200,239));
-         panels[16].setForeground(Color.WHITE);
-         panels[16].setFont(new Font ("ComicSans",Font.BOLD, 32));
+         panels[16].setBackground(new Color(238,200,239)); //pink
+         panels[16].setForeground(new Color(152,116,165)); //dark pink
+         panels[16].setFont(new Font ("Comic Sans MS",Font.BOLD, 32));
          panels[16].setBorder(customBorder);
       resultslabel = new JLabel("Results:");
-         resultslabel.setFont(new Font("ComicSans", Font.BOLD, 14));
-         resultslabel.setForeground(new Color(238,200,239));
+         resultslabel.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+         resultslabel.setForeground(new Color(87,151,188)); //dark blue
       results = new TextArea(filler,1,10,TextArea.SCROLLBARS_NONE);
       results.setEditable(false);
       pResults.add(panels[16]);
@@ -64,8 +65,8 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       pResults.add(results);
    
       label2 = new JLabel(filler);
-       label2.setFont(new Font("ComicSans", Font.BOLD, 14));
-       label2.setForeground(new Color(238,200,239));
+       label2.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+       label2.setForeground(new Color(238,200,239)); //blue
        pResults.add(label2);
        
          
@@ -79,9 +80,9 @@ public class MooseGameGUI extends JFrame implements ActionListener{
       for(int i=0;i<16;i++){
          String panelNum = i+1+"";
          panels[i] = new JButton (panelNum);
-         panels[i].setBackground(new Color(185,228,246));
-         panels[i].setForeground(Color.WHITE);
-         panels[i].setFont(new Font ("ComicSans",Font.BOLD, 32));
+         panels[i].setBackground(new Color(185,228,246)); //blue
+         panels[i].setForeground(new Color(87,151,188)); //dark blue
+         panels[i].setFont(new Font ("Comic Sans MS",Font.BOLD, 32));
          panels[i].setBorder(customBorder);
          //set font
          panels[i].addActionListener(this);
